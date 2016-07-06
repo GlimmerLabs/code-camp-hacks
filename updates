@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+
+# updates
+#   A sample Perl program that looks for new URLs.
+#   Note that Perl programs begin with the line at the top.
+#   Comments are preceded by pound signs (hashes, whatever)
+#   Perl programs should be made executable with
+#     chmod 755 PROGRAM
+
+my $prev = "";
+
+while (my $line = <STDIN>) {
+  # This is a standard "read lines from input" loop.  
+  # The `my $line` declares a variable.  Variable names start with
+  # dollar signs.  You need precede variable names with `my`, but 
+  # it's good practice.
+
+  chomp($line);         # Remove the carriage return if there is one
+  my ($camp,$url) = split("\t",$line);   # Split the line into an array
+
+  $url =~ s/http:\/\///;
+  $url =~ s/https:\/\///;
+  $url =~ s/\/.*//;
+  $url =~ s/ *>.*//;
+
+  if (($url ne $prev) && ($url)) {
+    my $found = `grep "$url" aggregate-data-2016-08-05.tsv`;
+    if ($found) {
+    }
+    else {
+      $prev = $url;
+      print "$line\n";
+    }
+  }
+} # while
