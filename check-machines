@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+
+# checkmachines machines
+#   Makes sure that we can execute commands on the machines.  Good to use
+#   before running distribute-work
+
+# Read the machines
+my @machines = ();
+open FILE, "< $ARGV[0]";
+while (my $tmp = <FILE>) {
+  chomp($tmp);
+  # Skip comments
+  if ($tmp =~ m/^#/) { 
+  }
+  else {
+    push @machines, $tmp;
+  }
+}
+close FILE;
+
+foreach my $machine (@machines) {
+  my $syscomm = "remote-command $machine hostname";
+  print "$syscomm\n";
+  system($syscomm);
+} # foreach
