@@ -46,7 +46,7 @@ my $loc = $location;
 $loc =~ s/[^a-zA-Z0-9]/_/g;
 my $q = $query;
 $q =~ s/[^a-zA-Z0-9]/_/g;
-my $fname = "data/$loc-$q-$year$mon$mday$hour$min$sec.html";
+my $fname = "queries/$loc-$q-$year$mon$mday$hour$min$sec.html";
 # print STDERR "FILE is $fname\n";
 
 # Generate the command
