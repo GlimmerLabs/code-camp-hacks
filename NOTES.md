@@ -11,14 +11,23 @@ URL for a location-based Google search.
 `fetchdata` - Given a location and search terms (as in `makeurl`), fetches
 the data and saves in an appropriately-named file.
 
-Workflow for Fetching Data
---------------------------
+`extract-google-urls` - Extract name/URL pairs from Google search
+results pages.
 
-* For each location/terms pair, call `fetchdata`.  We now have a 
-  bunch of files.
-* Extract unique URLs from those files.  (We can also gather other data.)
-* For each unique URL, fetch the page, probably using `wget`.
-* Look at the contents.
+Workflow for Making List of URLs
+--------------------------------
+
+* For each location/terms pair, call `fetchdata`.  The following
+  are the two steps to automate this work.
+    * `make fetch-commands`
+    * `distribute-work fetch-commands machines`
+* Extract all URLs from those files using extract-google-urls.
+    * `make data/all-results.tsv`
+    * (We can also choose gather other data.)
+* Extract only the unique results
+    * `make data/unique-results.tsv`
+* Deal with the results
+    * For each unique URL, visit or fetch the page (using `wget`).
 
 Other Comments
 --------------
