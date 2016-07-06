@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+
+# fetchdata location query
+#   Fetches data from the particular location using the given query,
+#     storing the result in a similarly-named file.
+#   Warning!  Doing this too often may trigger IP blocking by
+#     Google
+
+# +---------+--------------------------------------------------------
+# | Globals |
+# +---------+
+
+# http://www.useragentstring.com/pages/useragentstring.php
+my @USER_AGENTS = (
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0"
+);
+
+my $USER_AGENT = $USER_AGENTS[int(rand(1+$#USER_AGENTS))];
+# print STDERR "user agent: $USER_AGENT\n";
+
+# +------+-----------------------------------------------------------
+# | Main |
+# +------+
+
+# Grab the command-line parameters
+my $location = $ARGV[0];
+my $query = $ARGV[1];
+
+# Build the URL
+my $url = `./makeurl '$location' '$query'`;
+chomp($url);
+# print STDERR "URL is $url\n";
+
+# Grab time info in a way useful for output
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+$year += 1900;
+$mon += 1;
+if ($mon < 10) { $mon = "0$mon"; }
+if ($mday < 10) { $mday = "0$mday"; }
+if ($hour < 10) { $hour = "0$hour"; }
+if ($min < 10) { $min = "0$min"; }
+if ($sec < 10) { $sec = "0$sec"; }
+
+# Generate a file name
+my $loc = $location;
+$loc =~ s/[^a-zA-Z0-9]/_/g;
+my $q = $query;
+$q =~ s/[^a-zA-Z0-9]/_/g;
+my $fname = "data/$loc-$q-$year$mon$mday$hour$min$sec.html";
+# print STDERR "FILE is $fname\n";
+
+# Generate the command
+my $command = "lynx -source '$url' > $fname";
+# my $command = "curl --user-agent '$USER_AGENT' -L '$url' > $fname";
+# print STDERR "COMMAND is $command\n";
+
+print STDERR "Fetching to $fname\n";
+system($command);
