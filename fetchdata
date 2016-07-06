@@ -16,7 +16,6 @@ my @USER_AGENTS = (
 );
 
 my $USER_AGENT = $USER_AGENTS[int(rand(1+$#USER_AGENTS))];
-# print STDERR "user agent: $USER_AGENT\n";
 
 # +------+-----------------------------------------------------------
 # | Main |
@@ -29,7 +28,6 @@ my $query = $ARGV[1];
 # Build the URL
 my $url = `./makeurl '$location' '$query'`;
 chomp($url);
-# print STDERR "URL is $url\n";
 
 # Grab time info in a way useful for output
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
@@ -47,12 +45,10 @@ $loc =~ s/[^a-zA-Z0-9]/_/g;
 my $q = $query;
 $q =~ s/[^a-zA-Z0-9]/_/g;
 my $fname = "queries/$loc-$q-$year$mon$mday$hour$min$sec.html";
-# print STDERR "FILE is $fname\n";
 
 # Generate the command
 my $command = "lynx -source '$url' > $fname";
 # my $command = "curl --user-agent '$USER_AGENT' -L '$url' > $fname";
-# print STDERR "COMMAND is $command\n";
 
 print STDERR "Fetching to $fname\n";
 system($command);
