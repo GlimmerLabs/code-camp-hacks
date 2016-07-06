@@ -1,3 +1,4 @@
+# Standard Perl ignores
 /blib/
 /.build/
 _build/
@@ -18,3 +19,6 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
+
+# Added
+*.swp
