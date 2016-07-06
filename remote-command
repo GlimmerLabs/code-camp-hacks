@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# remote-command machine command
+#   Run a command on a remote machine, in the same directory as on
+#   this machine.
+
+# Extract basic information
+dir=`pwd`;
+machine=$1;
+command=$2;
+
+# Sanity checks
+if [ -z "$machine" ]; then
+  echo "ERROR: No machine specified.";
+  exit 1;
+fi
+if [ -z "$command" ]; then
+  echo "ERROR: No command specified.";
+  exit 1;
+fi
+
+# Explain what we're doing
+echo "$machine: $command";
+# And do the work
+ssh $machine "cd $dir ; $command"
