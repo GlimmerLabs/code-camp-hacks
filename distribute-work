@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+
+# distribute-work commands machines
+#   Takes a file of commands and a file of remote machines (with a common
+#   filesystem) and distributes the commands to the remote machines.  
+#   Pauses before cycling back to the first machine.
+
+my @commands = ();
+my @machines = ();
+
+# Read the commands
+open FILE, "< $ARGV[0]";
+while (my $tmp = <FILE>) {
+  chomp($tmp);
+  push @commands , $tmp;
+}
+close FILE;
+
+# Read the machines
+open FILE, "< $ARGV[1]";
+while (my $tmp = <FILE>) {
+  chomp($tmp);
+  # Skip comments
+  if ($tmp =~ m/^#/) { 
+  }
+  else {
+    push @machines, $tmp;
+  }
+}
+close FILE;
+
+my $num_machines = $#machines + 1;
+my $machine_number = 0;
+my $command_number = 0;
+foreach my $command (@commands) {
+  # Pause when we cycle machines
+  if ($machine_number >= $num_machines) {
+    my $pause = 20 + int(11*rand());
+    print "Pausing $pause seconds!\n";
+    sleep $pause;
+    $machine_number = 0;
+  }
+  my $machine = $machines[$machine_number];
+  print "$command_number: $machine: $command\n";
+  $command =~ s/"/\\"/g;
+  my $syscomm = "remote-command $machine \"$command\"";
+  print "$syscomm\n";
+  system($syscomm);
+  $command_number++;
+  $machine_number++;
+} # foreach command
