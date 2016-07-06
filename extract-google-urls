@@ -8,13 +8,24 @@ while (my $line = <STDIN>) {
   # Here are URLs in results from lynx
   while ($line =~ m/<a href="\/url\?q=([^"]*?)\&amp;[^"]*">(.*?)<\/a>/g) {
     my ($url,$title) = ($1,$2);
-    $title =~ s/<[^>]*>//g;
+    $title = cleantitle($title);
     if ($title) { print "$url\t$title\n"; }
   } # while
   # Here are URLs in results from simulated Firefox
   while ($line =~ m/<a href="([^"]*)" onmousedown[^>]*>(.*?)<\/a>/g) {
     my ($url,$title) = ($1,$2);
-    $title =~ s/<[^>]*>//g;
+    $title = cleantitle($title);
     if ($title) { print "$url\t$title\n"; }
   } # while
 }
+
+sub cleantitle($)
+{
+  my $title = shift;
+  $title =~ s/<[^>]*>//g;
+  $title =~ s/\&#39;/'/g;
+  return $title;
+}
+
+    $title =~ s/\&#39;/'/g;
+
