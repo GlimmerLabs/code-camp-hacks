@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+# make-fetch-commands locations terms
+#   Make a list of commands to fetch pages from Google.
+#   Prints the commands to stdout.
+
+my $locations = $ARGV[0];
+my $terms = $ARGV[1];
+
+my @locations = ();
+my @terms = ();
+
+# Read the locations
+open LOCATIONS, "< $locations";
+while (my $loc = <LOCATIONS>) {
+  chomp($loc);
+  push @locations, $loc;
+}
+close LOCATIONS;
+
+# Read the terms
+open TERMS, "< $terms";
+while (my $term = <TERMS>) {
+  chomp($term);
+  push @terms, $term;
+}
+close TERMS;
+
+foreach my $location (@locations) {
+  foreach my $term (@terms) {
+    print "fetchdata '$location' '$term'\n";
+  } # foreach $term
+} # foreach location
