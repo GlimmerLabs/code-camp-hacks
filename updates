@@ -24,7 +24,7 @@ while (my $line = <STDIN>) {
   $url =~ s/ *>.*//;
 
   if (($url ne $prev) && ($url)) {
-    my $found = `grep "$url" aggregate-data-2016-08-05.tsv`;
+    my $found = `grep "$url" data/aggregate-data.tsv`;
     if ($found) {
     }
     else {
