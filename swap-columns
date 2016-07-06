@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+# Because cut -f2,1 doesn't work
+
+while (my $line = <STDIN>) {
+  chomp($line);
+  ($left,$right) = split(/\t/,$line);
+  print "$right\t$left\n";
+}
