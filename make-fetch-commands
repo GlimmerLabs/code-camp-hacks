@@ -26,8 +26,8 @@ while (my $term = <TERMS>) {
 }
 close TERMS;
 
-foreach my $location (@locations) {
-  foreach my $term (@terms) {
+foreach my $term (@terms) {
+  foreach my $location (@locations) {
     print "fetchdata '$location' '$term'\n";
-  } # foreach $term
-} # foreach location
+  } # foreach location
+} # foreach $term
