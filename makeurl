@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+
+# makeurl city search-terms
+#
+# ideas borrowed from
+#   https://moz.com/ugc/geolocation-the-ultimate-tip-to-emulate-local-search
+
+# +-----------+------------------------------------------------------
+# | Libraries |
+# +-----------+
+
+use MIME::Base64;
+use URI::Encode qw(uri_encode);
+
+# +-----------+------------------------------------------------------
+# | Constants |
+# +-----------+
+
+# The list of codes for different length strings
+my @CODES= split(//,"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+
+# The start of the URL
+my $BASE = "http://www.google.com/search?";
+
+# +------+-----------------------------------------------------------
+# | Main |
+# +------+
+
+# Grab the parameters
+my $city = $ARGV[0];
+my $term = $ARGV[1];
+
+# Build the location part of the query
+my $code = encode_base64($city);
+chomp($code);
+$code =~ s/==$//;
+my $location = "uule=w+CAIQICI" . lengthcode($city) . $code;
+
+# Build the term part of the query
+my $search = "q=" . uri_encode($term);
+
+# Build the whole URL
+my $url = "$BASE$location&$search";
+
+# And we're done
+print "$url\n";
+
+exit 0;
+
+# +-------------+----------------------------------------------------
+# | Subroutines |
+# +-------------+
+
+sub lengthcode($) {
+  my $string = shift;
+  my $length = length($string);
+  $length = $length % 64;
+  return $CODES[$length];
+}
