@@ -11,8 +11,8 @@ URL for a location-based Google search.
 `fetchdata` - Given a location and search terms (as in `makeurl`), fetches
 the data and saves in an appropriately-named file.
 
-Workflow
---------
+Workflow for Fetching Data
+--------------------------
 
 * For each location/terms pair, call `fetchdata`.  We now have a 
   bunch of files.
@@ -31,3 +31,5 @@ HTML that Google provides for each is also very different, which
 makes the "extract URLs" task a bit harder.  Fortunately, the main
 search results seem to be identical.
 
+An alternative mechanism for setting location can be found at
+https://gofishdigital.com/google-results-change-location/.
