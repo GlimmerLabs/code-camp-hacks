@@ -11,3 +11,6 @@ data/all-results.tsv: queries/*.html extract-google-urls
 
 data/unique-results.tsv: data/all-results.tsv
 	sort -u data/all-results.tsv > data/unique-results.tsv
+
+data/updates.tsv: data/unique-results.tsv
+	./swap-columns < data/unique-results.tsv | ./updates > $@
