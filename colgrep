@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+
+# colgrep term col# inputfile
+#   Search for ther term in the given column of the input file.
+
+# +---------+--------------------------------------------------------
+# | Globals |
+# +---------+
+
+my $nbsp = chr(140);
+
+# +------+-----------------------------------------------------------
+# | Main |
+# +------+
+
+# Grab command line variables
+my $term = $ARGV[0];
+my $col = $ARGV[1];
+my $inputfile = $ARGV[2];
+
+# Sanity check
+if (! -f $inputfile) {
+  print STDERR "Can't find '$inputfile'\n";
+  exit 1;
+}
+
+# Open the input file.
+open my $DATA, "<", "$inputfile";
+
+# For each line
+while (my $line = <$DATA>) {
+  chomp($line); # Remove the carriage return/newline
+  # Split into columns
+  my @columns = split("\t",$line);
+  # Get the the appropriate column
+  my $column = $columns[$col];
+  # If the column matches the term, print it out
+  #   It matches if it's either at the end of the column 
+  #   or followed by a comma.
+  if (($column =~ /^$term,/i) || ($column =~ /^$term$/i) ||
+      ($column =~ /[ ,]$term,/i) || ($column =~ /[ ,]$term$/i) ||
+      ($column =~ /$nbsp$term,/i) || ($column =~ /$nbsp$term$/i)) {
+    print "$line\n";
+  } # if
+} # while
+
+# Clean up
+close $DATA;
