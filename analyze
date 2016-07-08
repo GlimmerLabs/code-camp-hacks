@@ -66,7 +66,7 @@ analyzeLanguage("ZBrush");
 sub analyzeLanguage($) {
   my $language = shift; # This is how you say "grab an argument" in Perl
   print "$language: ";
-  $result = `colgrep "$language" 6 "$data" | wc -l`;
+  $result = `./colgrep "$language" 6 "$data" | wc -l`;
   print $result;
 }
 

@@ -151,7 +151,7 @@ http://camps.fit.edu/engineering/	Florida Institute of Technology	Engineering Ca
 http://challengecamps.com/morning-programs/		Printing the Future	New York	N/A	Art	Unknown	$1,355	8,9,10,11,12,13,	20	N
 https://www.tacc.utexas.edu/education/stem-programs/camp-c3		Camp C3	Texas	N/A	Programming	Unknown	$1,700	11,12	30	Y
 https://summerinstitutes.stanford.edu/courses/high-school/Computer-Science#department-803	Standford Summer Institute Camp	Artificial Intelligence	California	N/A	Other (AI)	Unknown	$6,300	15,16	15	Y
-https://www.stevens.edu/admissions/pre-college-programs/available-pre-college-programs		Computer Science	New Jersey	N/A	Other (Algorithms and Cryptogroaphy)	Unknown	$1,800	N/A	5	U
+https://www.stevens.edu/admissions/pre-college-programs/available-pre-college-programs		Computer Science	New Jersey	N/A	Other (Algorithms and Cryptography)	Unknown	$1,800	N/A	5	U
 http://www.oxbridgeprograms.com/	The Cambridge Prep Experience.	Computer Science	United Kingdom	N/A	Other (Algorithms)	Unknown	$7,995	13,14	20	Y
 http://www.oxbridgeprograms.com/	The Cambridge Prep Experience.	Artificial Intelligence	United Kingdom	N/A	Other (Artificial Intelligence)	Unknown	$7,995	13,14	20	Y
 http://www.starschallenge.org/stars/Computing%20Camp%20For%20Girls/		Code Secrets	New Jersey	N/A	Other (circuitry)	Arduino	$300	11,12	5	U
@@ -160,14 +160,14 @@ http://challengecamps.com/morning-programs/		3D Printer Builders	New York	N/A	Ot
 http://i2camp.org/explore-camp-courses/		How Computers Think	Massachusetts, New York, California, Connecticut, New Jersey	N/A	Other (computer construction)	Unknown	$850	10,11,12,13	Full, 5	U
 https://edwardscampus.ku.edu/summer-camps-ku-edwards-campus	Kansas University	Do You Arduino? (Maker/Computer Engineering)	Kansas	N/A	Other (computer engineering/circuitry)	Unknown	$175	11,12,13	Half, 5	N
 https://edwardscampus.ku.edu/summer-camps-ku-edwards-campus	Kansas University	Raspberry Pi (Maker/Computer Engineering	Kansas	N/A	Other (computer engineering/circuitry)	Unknown	$125	11,12,13	Half, 5	N
-http://camps.mainerobotics.org/buildyourowncomputercamp.html	Maine Robotics Camp Program	Build Your Own Computer	Maine	N/A	Other (computer mechanics)	Unknown	$635 or $690 depending on location	12,13,14,15,16	Full, 5	U
+http://camps.mainerobotics.org/buildyourowncomputercamp.html	Maine Robotics Camp Program	Build Your Own Computer	Maine	N/A	Robotics	Unknown	$635 or $690 depending on location	12,13,14,15,16	Full, 5	U
 http://www.codecraftlab.org/product/digital-makers-cyber-defenders-internet-creators/	Florida Institute of Technology assoicated	Digital Makers, Cyber Defenders and Internet Creators	Florida	N/A	Other (cyber defense)	Unknown	$200	12,13,14,15,16,17	5	U
 https://www.engr.ncsu.edu/theengineeringplace/summerprograms/middle-school/raleigh.php		Camp I	North Carolina	N/A	Other (Engineering)	Unknown	$400	11,12,13	Full, 5	Y
-http://www.tetonscience.org/field-education/summer-academy	Journeys School Summer Innovation Academy	Beginning Programming	Wyoming	N/A	Other (Interactive Storytelling)	Unknown	$210	8,9,10,11,12,13	5	N
+http://www.tetonscience.org/field-education/summer-academy	Journeys School Summer Innovation Academy	Beginning Programming	Wyoming	N/A	Art	Unknown	$210	8,9,10,11,12,13	5	N
 http://www.sanjac.edu/node/4486416	San Jacinto College	Arduino Network Team	Texas	N/A	Other (Networks)	Unknown	$155	12,13,14,15,16	Full, 4	U
 http://stemacademy.oregonstate.edu/middle-school-summer-camps		Computational Biology Camp	Oregon	N/A	Other (Science)	Python	$145	12,13,14	Half, 5	N
 http://i2camp.org/explore-camp-courses/		Cyber Security	Massachusetts, New York, California, Connecticut, New Jersey	N/A	Other (security)	Arduino	$850	10,11,12,13	Full, 5	U
-https://www.cs.purdue.edu/outreach/adventures-in-cs.html		Purdue University Computer Science Camp	Indiana	N/A	Other (software development, focus on computational thinking patterns)	Linux, Python	unknown	11,12,13	5	N
+https://www.cs.purdue.edu/outreach/adventures-in-cs.html		Purdue University Computer Science Camp	Indiana	N/A	Programming	Linux, Python	unknown	11,12,13	5	N
 www.chasewoodlearning.com/#!summer-camps/cerm		 STEM Summer Camp	Illinois	N/A	Other (STEM)	Unknown	$195	6,7,8,9,10,11,12,13,14	Half, 5	U
 http://p12.ehe.osu.edu/files/2014/03/2014-OSU-camp-listings.pdf		Young Women's Summer Institute (residential)	Ohio	Women	Other (technology)	Unknown	$250	11,12	Overnight, 7	U
 p12.ehe.osu.edu/files/2014/03/2014-OSU-camp-listings.pdf 		4-H Camp Tech (residential)	Ohio	N/A	Other (technology)	Unknown	$200	11,12,13	Overnight, 2	U
@@ -476,6 +476,6 @@ http://brochures.lerntools.com/pdf_view.cfm?id=3614	Community College of Baltimo
 http://brochures.lerntools.com/pdf_view.cfm?id=3614	Community College of Baltimore County	All About Technology	Maryland	N/A	Circuitry	Unknown	$219	7,8,9,10,11	Half, 5	N
 http://brochures.lerntools.com/pdf_view.cfm?id=3614	Community College of Baltimore County	Alice 3D Programming	Maryland	N/A	Art	Alice	$165	12,13,14	Half, 5	N
 http://www.langleyschool.org/summer-studio/classes/minecraft-animators		Minecraft® Animators	Virginia	N/A	Minecraft	Minecraft	$230	8,9,10,11,12,13	Half, 5	U
-http://www.ideassummercamps.com/minecraft-camp-ages-7-to-12/		Minecraft Camp	Maryland	N/A	Minecraft	Minecraft, JavaScript	$295	7,8,9,10,11,12	Full, 5	U
+http://www.ideassummercamps.com/minecraft-camp-ages-7-to-12/		Minecraft Camp	Maryland	N/A	Minecraft	Minecraft, JavaScript, Java	$295	7,8,9,10,11,12	Full, 5	U
 https://smithsonianassociates.org/camp/	Smithsonian	Advanced Video Game Design	District of Columbia	N/A	Game Design	Unknown	$460	11,12,13	Full, 5	U
 http://cmse.umd.edu/k12/summer/lego		LEGO Robotics Camp	Maryland	Ehtnic Minorities	Robotics	LEGO	$75	10,11	Full, 5	Y
