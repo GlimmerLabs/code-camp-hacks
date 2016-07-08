@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+# nbsp
+#   Print out all the lines from standard input that contain a
+#   non-breaking space.
+
+# +---------+--------------------------------------------------------
+# | Globals |
+# +---------+
+
+my $prenbsp = chr(194);
+my $nbsp = chr(160);
+my $alt = "$prenbsp$nbsp";
+
+# +------+-----------------------------------------------------------
+# | Main |
+# +------+
+
+# For each line
+while (my $line = <STDIN>) {
+  my $tmp = index($line,$nbsp);
+  if ($tmp > -1) {
+    print substr($line, 0, $tmp);
+    print "**HERE**";
+    print substr($line, $tmp);
+  }
+} # while
+
