@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+
+# analyze
+#   Do all of our analysis and print out the results.
+
+my $data = "data/aggregate-data.tsv";
+
+print "state\n";
+analyzeState("Alabama");
+analyzeState("Alaska");
+analyzeState("Arizona");
+analyzeState("Arkansas");
+analyzeState("California");
+analyzeState("Colorado");
+analyzeState("Connecticut");
+analyzeState("Delaware");
+analyzeState("Florida");
+analyzeState("Georgia");
+analyzeState("Hawaii");
+analyzeState("Idaho");
+analyzeState("Illinois");
+analyzeState("Indiana");
+analyzeState("Iowa");
+analyzeState("Kansas");
+analyzeState("Kentucky");
+analyzeState("Louisiana");
+analyzeState("Maine");
+analyzeState("Maryland");
+analyzeState("Massachusetts");
+analyzeState("Michigan");
+analyzeState("Minnesota");
+analyzeState("Mississippi");
+analyzeState("Missouri");
+analyzeState("Montana");
+analyzeState("Nebraska");
+analyzeState("Nevada");
+analyzeState("New Hampshire");
+analyzeState("New Jersey");
+analyzeState("New Mexico");
+analyzeState("New York");
+analyzeState("North Carolina");
+analyzeState("North Dakota");
+analyzeState("Ohio");
+analyzeState("Oklahoma");
+analyzeState("Oregon");
+analyzeState("Pennsylvania");
+analyzeState("Rhode Island");
+analyzeState("South Carolina");
+analyzeState("South Dakota");
+analyzeState("Tennessee");
+analyzeState("Texas");
+analyzeState("Utah");
+analyzeState("Vermont");
+analyzeState("Virginia");
+analyzeState("Washington");
+analyzeState("West Virginia");
+analyzeState("Wisconsin");
+analyzeState("Wyoming");
+
+sub analyzeState($) {
+  my $state = shift; # This is how you say "grab an argument" in Perl
+  print "$state: ";
+  $state = `./colgrep "$state" 3 "$data" | wc -l`;
+  print $result;
+}
