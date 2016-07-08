@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+# A quick hack to demonstrate how to use the new facilities of colgrep.
+# Looks for all the Minecraft camps that do not use Java.
+
+my $data = "data/aggregate-data.tsv";
+
+my $result = `cat $data | colgrep "Minecraft" 5 - | colgrep "Java" 6 - negate`;
+print $result;
