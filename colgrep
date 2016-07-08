@@ -1,13 +1,17 @@
 #!/usr/bin/perl
 
-# colgrep term col# inputfile
+# colgrep term col# inputfile option
 #   Search for ther term in the given column of the input file.
+#   If inputfile is "-", takes input from stdin
+#   option can be blank or "negate", in which case it negates the test
 
 # +---------+--------------------------------------------------------
 # | Globals |
 # +---------+
 
-my $nbsp = chr(140);
+my $nbsp0 = chr(194);
+my $nbsp1 = chr(140);
+my $nbsp = "$nbsp0$nbsp1";
 
 # +------+-----------------------------------------------------------
 # | Main |
@@ -17,19 +21,29 @@ my $nbsp = chr(140);
 my $term = $ARGV[0];
 my $col = $ARGV[1];
 my $inputfile = $ARGV[2];
+my $option = $ARGV[3];
+
+my $negate = ($option eq "negate");
 
 # Sanity check
-if (! -f $inputfile) {
+if (($inputfile ne "-") && (! -f $inputfile)) {
   print STDERR "Can't find '$inputfile'\n";
   exit 1;
 }
 
+my $DATA;
 # Open the input file.
-open my $DATA, "<", "$inputfile";
+if ($inputfile eq "-") {
+  $DATA = STDIN;
+}
+else {
+  open $DATA, "<", "$inputfile";
+}
 
 # For each line
 while (my $line = <$DATA>) {
   chomp($line); # Remove the carriage return/newline
+  $line =~ s/$nbsp/ /g; # Clean up non-breaking spaces
   # Split into columns
   my @columns = split("\t",$line);
   # Get the the appropriate column
@@ -40,9 +54,14 @@ while (my $line = <$DATA>) {
   if (($column =~ /^$term,/i) || ($column =~ /^$term$/i) ||
       ($column =~ /[ ,]$term,/i) || ($column =~ /[ ,]$term$/i) ||
       ($column =~ /$nbsp$term,/i) || ($column =~ /$nbsp$term$/i)) {
-    print "$line\n";
+    if (! $negate) { print "$line\n"; }
   } # if
+  else {
+    if ($negate) { print "$line\n"; }
+  }
 } # while
 
 # Clean up
-close $DATA;
+if ($inputfile ne "-") {
+  close $DATA;
+}
