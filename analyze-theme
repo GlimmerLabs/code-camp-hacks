@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+# analyze
+#   Do all of our analysis and print out the results.
+
+my $data = "data/aggregate-data.tsv";
+
+print "LANGUAGES and TOOLS\n";
+analyzeTheme("Robotics");
+analyzeTheme("Programming");
+analyzeTheme("Minecraft");
+analyzeTheme("Art");
+analyzeTheme("Game Design");
+analyzeTheme("App Dev");
+analyzeTheme("Web Dev");
+analyzeTheme("Other");
+
+
+sub analyzeTheme($) {
+  my $theme = shift; # This is how you say "grab an argument" in Perl
+  print "$theme: ";
+  $result = `./colgrep "$theme" 5 "$data" | wc -l`;
+  print $result;
+}

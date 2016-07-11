@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+# analyze
+#   Do all of our analysis and print out the results.
+
+my $data = "data/aggregate-data.tsv";
+
+print "target\n";
+analyzeTarget("Women");
+analyzeTarget("Ethnic Minorities");
+analyzeTarget("N/A");
+analyzeTarget("Christians");
+analyzeTarget("Low Income");
+analyzeTarget("Unknown");
+
+
+
+sub analyzeTarget($) {
+  my $target = shift; # This is how you say "grab an argument" in Perl
+  print "$target: ";
+  $result = `./colgrep "$target" 4 "$data" | wc -l`;
+  print $result;
+}

@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+
+# A quick hack to demonstrate how to use the new facilities of colgrep.
+# Looks for all the Minecraft camps that do not use Java.
+
+my $data = "data/aggregate-data.tsv";
+analyzeThemeLang("LEGO");
+analyzeThemeLang("Scratch");
+analyzeThemeLang("Java");
+analyzeThemeLang("Minecraft");
+analyzeThemeLang("Python");
+analyzeThemeLang("HTML");
+analyzeThemeLang("JavaScript");
+analyzeThemeLang("CSS");
+analyzeThemeLang("C");
+analyzeThemeLang("C++");
+analyzeThemeLang("Arduino");
+analyzeThemeLang("App Inventor");
+analyzeThemeLang("Alice");
+analyzeThemeLang("Unity");
+
+sub analyzeThemeLang($) {
+    my $lang = shift;
+    @themes = ("Robotics", "Programming", "Minecraft", "Art", "Game Design", "App Dev", "Web Dev");
+    foreach $a (@themes) {
+	my $result = `cat $data | ./colgrep "$a" 5 - | ./colgrep "$lang" 6 - | wc -l`;
+	print "$lang & ";
+	print "$a: ";
+	print $result;
+    }
+}
