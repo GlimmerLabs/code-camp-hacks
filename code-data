@@ -1,0 +1,542 @@
+#!/usr/bin/perl
+
+my $nbsp0 = chr(194);
+my $nbsp1 = chr(140);
+my $nbsp = "$nbsp0$nbsp1";
+
+# Grab command line variables
+my $inputfile = $ARGV[0];
+
+# Sanity check
+if (($inputfile ne "-") && (! -f $inputfile)) {
+  print STDERR "Can't find '$inputfile'\n";
+  exit 1;
+}
+
+my $DATA;
+# Open the input file.
+if ($inputfile eq "-") {
+  $DATA = STDIN;
+}
+else {
+  open $DATA, "<", "$inputfile";
+}
+
+while (my $line = <$DATA>) {
+chomp($line); # Remove the carriage return/newline
+$line =~ s/$nbsp/ /g; # Clean up non-breaking spaces
+my @columns = split("\t",$line);
+my $langCol = $columns[6];
+my $themeCol = $columns[5];
+my $targetCol = $columns[4];
+my @langArr;
+my @themeArr;
+my @targetArr;
+my $l = 0;
+my $th = 0;
+my $ta = 0;
+if (($column =~ /^"Women",/i) || ($column =~ /^"Women"$/i) ||
+($column =~ /[ ,]"Women",/i) || ($column =~ /[ ,]"Women"$/i) ||
+($column =~ /$nbsp"Women",/i) || ($column =~ /$nbsp"Women"$/i)) {
+$targetArr[ta] = 0;
+$ta++;
+}
+if (($column =~ /^"N/A",/i) || ($column =~ /^"N/A"$/i) ||
+($column =~ /[ ,]"N/A",/i) || ($column =~ /[ ,]"N/A"$/i) ||
+($column =~ /$nbsp"N/A",/i) || ($column =~ /$nbsp"N/A"$/i)) {
+$targetArr[ta] = 1;
+$l++;
+}
+if (($column =~ /^"Ethnic Minorities",/i) || ($column =~ /^"Ethnic Minorites"$/i) ||
+($column =~ /[ ,]"Ethnic Minorities",/i) || ($column =~ /[ ,]"Ethnic Minorities"$/i) ||
+($column =~ /$nbsp"Ethnic Minorities",/i) || ($column =~ /$nbsp"Ethnic Minorities"$/i)) {
+$targetArr[ta] = 2;
+$ta++;
+}
+if (($column =~ /^"Low Income",/i) || ($column =~ /^"Low Income"$/i) ||
+($column =~ /[ ,]"Low Income",/i) || ($column =~ /[ ,]"Low Income"$/i) ||
+($column =~ /$nbsp"Low Income",/i) || ($column =~ /$nbsp"Low Income"$/i)) {
+$targetArr[ta] = 3;
+$ta++;
+}
+if (($column =~ /^"Game Design",/i) || ($column =~ /^"Game Design"$/i) ||
+($column =~ /[ ,]"Game Design",/i) || ($column =~ /[ ,]"Game Design"$/i) ||
+($column =~ /$nbsp"Game Design",/i) || ($column =~ /$nbsp"Game Design"$/i)) {
+$themeArr[th] = 0;
+$th++;
+}
+if (($column =~ /^"Art",/i) || ($column =~ /^"Art"$/i) ||
+($column =~ /[ ,]"Art",/i) || ($column =~ /[ ,]"Art"$/i) ||
+($column =~ /$nbsp"Art",/i) || ($column =~ /$nbsp"Art"$/i)) {
+$themeArr[th] = 1;
+$th++;
+}
+if (($column =~ /^"Programming",/i) || ($column =~ /^"Programming"$/i) ||
+($column =~ /[ ,]"Programming",/i) || ($column =~ /[ ,]"Programming"$/i) ||
+($column =~ /$nbsp"Programming",/i) || ($column =~ /$nbsp"Programming"$/i)) {
+$themeArr[th] = 2;
+$th++;
+}
+if (($column =~ /^"Art",/i) || ($column =~ /^"Art"$/i) ||
+($column =~ /[ ,]"Art",/i) || ($column =~ /[ ,]"Art"$/i) ||
+($column =~ /$nbsp"Art",/i) || ($column =~ /$nbsp"Art"$/i)) {
+$themeArr[th] = 3;
+$th++;
+}
+if (($column =~ /^"Virtual Reality",/i) || ($column =~ /^"Virtual Reality"$/i) ||
+($column =~ /[ ,]"Virtual Reality",/i) || ($column =~ /[ ,]"Virtual Reality"$/i) ||
+($column =~ /$nbsp"Virtual Reality",/i) || ($column =~ /$nbsp"Virtual Reality"$/i)) {
+$themeArr[th] = 4;
+$th++;
+}
+if (($column =~ /^"Art",/i) || ($column =~ /^"Art"$/i) ||
+($column =~ /[ ,]"Art",/i) || ($column =~ /[ ,]"Art"$/i) ||
+($column =~ /$nbsp"Art",/i) || ($column =~ /$nbsp"Art"$/i)) {
+$themeArr[th] = 5;
+$th++;
+}
+if (($column =~ /^"App Dev",/i) || ($column =~ /^"App Dev"$/i) ||
+($column =~ /[ ,]"App Dev",/i) || ($column =~ /[ ,]"App Dev"$/i) ||
+($column =~ /$nbsp"App Dev",/i) || ($column =~ /$nbsp"App Dev"$/i)) {
+$themeArr[th] = 6;
+$th++;
+}
+if (($column =~ /^"Art",/i) || ($column =~ /^"Art"$/i) ||
+($column =~ /[ ,]"Art",/i) || ($column =~ /[ ,]"Art"$/i) ||
+($column =~ /$nbsp"Art",/i) || ($column =~ /$nbsp"Art"$/i)) {
+$themeArr[th] = 7;
+$th++;
+}
+if (($column =~ /^"Web Dev",/i) || ($column =~ /^"Web Dev"$/i) ||
+($column =~ /[ ,]"Web Dev",/i) || ($column =~ /[ ,]"Web Dev"$/i) ||
+($column =~ /$nbsp"Web Dev",/i) || ($column =~ /$nbsp"Web Dev"$/i)) {
+$themeArr[th] = 8;
+$th++;
+}
+if (($column =~ /^"Robotics",/i) || ($column =~ /^"Robotics"$/i) ||
+($column =~ /[ ,]"Robotics",/i) || ($column =~ /[ ,]"Robotics"$/i) ||
+($column =~ /$nbsp"Robotics",/i) || ($column =~ /$nbsp"Robotics"$/i)) {
+$themeArr[th] = 9;
+$th++;
+}
+if (($column =~ /^"Minecraft",/i) || ($column =~ /^"Minecraft"$/i) ||
+($column =~ /[ ,]"Minecraft",/i) || ($column =~ /[ ,]"Minecraft"$/i) ||
+($column =~ /$nbsp"Minecraft",/i) || ($column =~ /$nbsp"Minecraft"$/i)) {
+$themeArr[th] = 10;
+$th++;
+}
+if (($column =~ /^"Other",/i) || ($column =~ /^"Other"$/i) ||
+($column =~ /[ ,]"Other",/i) || ($column =~ /[ ,]"Other"$/i) ||
+($column =~ /$nbsp"Other",/i) || ($column =~ /$nbsp"Other"$/i)) {
+$themeArr[th] = 11;
+$th++;
+}
+if (($column =~ /^"Overview",/i) || ($column =~ /^"Overview"$/i) ||
+($column =~ /[ ,]"Overview",/i) || ($column =~ /[ ,]"Overview"$/i) ||
+($column =~ /$nbsp"Overview",/i) || ($column =~ /$nbsp"Overview"$/i)) {
+$themeArr[th] = 12;
+$th++;
+}
+if (($column =~ /^"3D Printing",/i) || ($column =~ /^"3D Printing"$/i) ||
+($column =~ /[ ,]"3D Printing",/i) || ($column =~ /[ ,]"3D Printing"$/i) ||
+($column =~ /$nbsp"3D Printing",/i) || ($column =~ /$nbsp"3D Printing"$/i)) {
+$langArr[l] = 0;
+$l++;
+}
+if (($column =~ /^"Adobe",/i) || ($column =~ /^"Adobe"$/i) ||
+($column =~ /[ ,]"Adobe",/i) || ($column =~ /[ ,]"Adobe"$/i) ||
+($column =~ /$nbsp"Adobe",/i) || ($column =~ /$nbsp"Adobe"$/i)) {
+$langArr[l] = 1;
+$l++;
+}
+if (($column =~ /^"Alice",/i) || ($column =~ /^"Alice"$/i) ||
+($column =~ /[ ,]"Alice",/i) || ($column =~ /[ ,]"Alice"$/i) ||
+($column =~ /$nbsp"Alice",/i) || ($column =~ /$nbsp"Alice"$/i)) {
+$langArr[l] = 2;
+$l++;
+}
+if (($column =~ /^"App Inventor",/i) || ($column =~ /^"App Inventor"$/i) ||
+($column =~ /[ ,]"App Inventor",/i) || ($column =~ /[ ,]"App Inventor"$/i) ||
+($column =~ /$nbsp"App Inventor",/i) || ($column =~ /$nbsp"App Inventor"$/i)) {
+$langArr[l] = 3;
+$l++;
+}
+if (($column =~ /^"Arduino",/i) || ($column =~ /^"Arduino"$/i) ||
+($column =~ /[ ,]"Arduino",/i) || ($column =~ /[ ,]"Arduino"$/i) ||
+($column =~ /$nbsp"Arduino",/i) || ($column =~ /$nbsp"Arduino"$/i)) {
+$langArr[l] = 4;
+$l++;
+}
+if (($column =~ /^"Blender",/i) || ($column =~ /^"Blender"$/i) ||
+($column =~ /[ ,]"Blender",/i) || ($column =~ /[ ,]"Blender"$/i) ||
+($column =~ /$nbsp"Blender",/i) || ($column =~ /$nbsp"Blender"$/i)) {
+$langArr[l] = 5;
+$l++;
+}
+if (($column =~ /^"Blockly",/i) || ($column =~ /^"Blockly"$/i) ||
+($column =~ /[ ,]"Blockly",/i) || ($column =~ /[ ,]"Blockly"$/i) ||
+($column =~ /$nbsp"Blockly",/i) || ($column =~ /$nbsp"Blockly"$/i)) {
+$langArr[l] = 6;
+$l++;
+}
+if (($column =~ /^"C",/i) || ($column =~ /^"C"$/i) ||
+($column =~ /[ ,]"C",/i) || ($column =~ /[ ,]"C"$/i) ||
+($column =~ /$nbsp"C",/i) || ($column =~ /$nbsp"C"$/i)) {
+$langArr[l] = 7;
+$l++;
+}
+if (($column =~ /^"C#",/i) || ($column =~ /^"C#"$/i) ||
+($column =~ /[ ,]"C#",/i) || ($column =~ /[ ,]"C#"$/i) ||
+($column =~ /$nbsp"C#",/i) || ($column =~ /$nbsp"C#"$/i)) {
+$langArr[l] = 8;
+$l++;
+}
+if (($column =~ /^"C++",/i) || ($column =~ /^"C++"$/i) ||
+($column =~ /[ ,]"C++",/i) || ($column =~ /[ ,]"C++"$/i) ||
+($column =~ /$nbsp"C++",/i) || ($column =~ /$nbsp"C++"$/i)) {
+$langArr[l] = 9;
+$l++;
+}
+if (($column =~ /^"CAD",/i) || ($column =~ /^"CAD"$/i) ||
+($column =~ /[ ,]"CAD",/i) || ($column =~ /[ ,]"CAD"$/i) ||
+($column =~ /$nbsp"CAD",/i) || ($column =~ /$nbsp"CAD"$/i)) {
+$langArr[l] = 10;
+$l++;
+}
+if (($column =~ /^"CSS",/i) || ($column =~ /^"CSS"$/i) ||
+($column =~ /[ ,]"CSS",/i) || ($column =~ /[ ,]"CSS"$/i) ||
+($column =~ /$nbsp"CSS",/i) || ($column =~ /$nbsp"CSS"$/i)) {
+$langArr[l] = 11;
+$l++;
+}
+if (($column =~ /^"Flash",/i) || ($column =~ /^"Flash"$/i) ||
+($column =~ /[ ,]"Flash",/i) || ($column =~ /[ ,]"Flash"$/i) ||
+($column =~ /$nbsp"Flash",/i) || ($column =~ /$nbsp"Flash"$/i)) {
+$langArr[l] = 12;
+$l++;
+}
+if (($column =~ /^"GameMaker",/i) || ($column =~ /^"GameMaker"$/i) ||
+($column =~ /[ ,]"GameMaker",/i) || ($column =~ /[ ,]"GameMaker"$/i) ||
+($column =~ /$nbsp"GameMaker",/i) || ($column =~ /$nbsp"GameMaker"$/i)) {
+$langArr[l] = 13;
+$l++;
+}
+if (($column =~ /^"GameSalad",/i) || ($column =~ /^"GameSalad"$/i) ||
+($column =~ /[ ,]"GameSalad",/i) || ($column =~ /[ ,]"GameSalad"$/i) ||
+($column =~ /$nbsp"GameSalad",/i) || ($column =~ /$nbsp"GameSalad"$/i)) {
+$langArr[l] = 14;
+$l++;
+}
+if (($column =~ /^"HTML",/i) || ($column =~ /^"HTML"$/i) ||
+($column =~ /[ ,]"HTML",/i) || ($column =~ /[ ,]"HTML"$/i) ||
+($column =~ /$nbsp"HTML",/i) || ($column =~ /$nbsp"HTML"$/i)) {
+$langArr[l] = 15;
+$l++;
+}
+if (($column =~ /^"Java",/i) || ($column =~ /^"Java"$/i) ||
+($column =~ /[ ,]"Java",/i) || ($column =~ /[ ,]"Java"$/i) ||
+($column =~ /$nbsp"Java",/i) || ($column =~ /$nbsp"Java"$/i)) {
+$langArr[l] = 16;
+$l++;
+}
+if (($column =~ /^"JavaScript",/i) || ($column =~ /^"JavaScript"$/i) ||
+($column =~ /[ ,]"JavaScript",/i) || ($column =~ /[ ,]"JavaScript"$/i) ||
+($column =~ /$nbsp"JavaScript",/i) || ($column =~ /$nbsp"JavaScript"$/i)) {
+$langArr[l] = 17;
+$l++;
+}
+if (($column =~ /^"LEGO",/i) || ($column =~ /^"LEGO"$/i) ||
+($column =~ /[ ,]"LEGO",/i) || ($column =~ /[ ,]"LEGO"$/i) ||
+($column =~ /$nbsp"LEGO",/i) || ($column =~ /$nbsp"LEGO"$/i)) {
+$langArr[l] = 18;
+$l++;
+}
+if (($column =~ /^"Lua",/i) || ($column =~ /^"Lua"$/i) ||
+($column =~ /[ ,]"Lua",/i) || ($column =~ /[ ,]"Lua"$/i) ||
+($column =~ /$nbsp"Lua",/i) || ($column =~ /$nbsp"Lua"$/i)) {
+$langArr[l] = 19;
+$l++;
+}
+if (($column =~ /^"Maya",/i) || ($column =~ /^"Maya"$/i) ||
+($column =~ /[ ,]"Maya",/i) || ($column =~ /[ ,]"Maya"$/i) ||
+($column =~ /$nbsp"Maya",/i) || ($column =~ /$nbsp"Maya"$/i)) {
+$langArr[l] = 20;
+$l++;
+}
+if (($column =~ /^"Minecraft",/i) || ($column =~ /^"Minecraft"$/i) ||
+($column =~ /[ ,]"Minecraft",/i) || ($column =~ /[ ,]"Minecraft"$/i) ||
+($column =~ /$nbsp"Minecraft",/i) || ($column =~ /$nbsp"Minecraft"$/i)) {
+$langArr[l] = 21;
+$l++;
+}
+if (($column =~ /^"PHP",/i) || ($column =~ /^"PHP"$/i) ||
+($column =~ /[ ,]"PHP",/i) || ($column =~ /[ ,]"PHP"$/i) ||
+($column =~ /$nbsp"PHP",/i) || ($column =~ /$nbsp"PHP"$/i)) {
+$langArr[l] = 22;
+$l++;
+}
+if (($column =~ /^"Processing",/i) || ($column =~ /^"Processing"$/i) ||
+($column =~ /[ ,]"Processing",/i) || ($column =~ /[ ,]"Processing"$/i) ||
+($column =~ /$nbsp"Processing",/i) || ($column =~ /$nbsp"Processing"$/i)) {
+$langArr[l] = 23;
+$l++;
+}
+if (($column =~ /^"Python",/i) || ($column =~ /^"Python"$/i) ||
+($column =~ /[ ,]"Python",/i) || ($column =~ /[ ,]"Python"$/i) ||
+($column =~ /$nbsp"Python",/i) || ($column =~ /$nbsp"Python"$/i)) {
+$langArr[l] = 24;
+$l++;
+}
+if (($column =~ /^"Scratch",/i) || ($column =~ /^"Scratch"$/i) ||
+($column =~ /[ ,]"Scratch",/i) || ($column =~ /[ ,]"Scratch"$/i) ||
+($column =~ /$nbsp"Scratch",/i) || ($column =~ /$nbsp"Scratch"$/i)) {
+$langArr[l] = 25;
+$l++;
+}
+if (($column =~ /^"Snap",/i) || ($column =~ /^"Snap"$/i) ||
+($column =~ /[ ,]"Snap",/i) || ($column =~ /[ ,]"Snap"$/i) ||
+($column =~ /$nbsp"Snap",/i) || ($column =~ /$nbsp"Snap"$/i)) {
+$langArr[l] = 26;
+$l++;
+}
+if (($column =~ /^"Source 2",/i) || ($column =~ /^"Source 2"$/i) ||
+($column =~ /[ ,]"Source 2",/i) || ($column =~ /[ ,]"Source 2"$/i) ||
+($column =~ /$nbsp"Source 2",/i) || ($column =~ /$nbsp"Source 2"$/i)) {
+$langArr[l] = 27;
+$l++;
+}
+if (($column =~ /^"Stencyl",/i) || ($column =~ /^"Stencyl"$/i) ||
+($column =~ /[ ,]"Stencyl",/i) || ($column =~ /[ ,]"Stencyl"$/i) ||
+($column =~ /$nbsp"Stencyl",/i) || ($column =~ /$nbsp"Stencyl"$/i)) {
+$langArr[l] = 28;
+$l++;
+}
+if (($column =~ /^"Unity",/i) || ($column =~ /^"Unity"$/i) ||
+($column =~ /[ ,]"Unity",/i) || ($column =~ /[ ,]"Unity"$/i) ||
+($column =~ /$nbsp"Unity",/i) || ($column =~ /$nbsp"Unity"$/i)) {
+$langArr[l] = 29;
+$l++;
+}
+if (($column =~ /^"Unreal Engine",/i) || ($column =~ /^"Unreal Engine"$/i) ||
+($column =~ /[ ,]"Unreal Engine",/i) || ($column =~ /[ ,]"Unreal Engine"$/i) ||
+($column =~ /$nbsp"Unreal Engine",/i) || ($column =~ /$nbsp"Unreal Engine"$/i)) {
+$langArr[l] = 30;
+$l++;
+}
+if (($column =~ /^"PicoCricket",/i) || ($column =~ /^"PicoCricket"$/i) ||
+($column =~ /[ ,]"PicoCricket",/i) || ($column =~ /[ ,]"PicoCricket"$/i) ||
+($column =~ /$nbsp"PicoCricket",/i) || ($column =~ /$nbsp"PicoCricket"$/i)) {
+$langArr[l] = 31;
+$l++;
+}
+if (($column =~ /^"3D Studio",/i) || ($column =~ /^"3D Studio"$/i) ||
+($column =~ /[ ,]"3D Studio",/i) || ($column =~ /[ ,]"3D Studio"$/i) ||
+($column =~ /$nbsp"3D Studio",/i) || ($column =~ /$nbsp"3D Studio"$/i)) {
+$langArr[l] = 32;
+$l++;
+}
+if (($column =~ /^"Code Studio",/i) || ($column =~ /^"Code Studio"$/i) ||
+($column =~ /[ ,]"Code Studio",/i) || ($column =~ /[ ,]"Code Studio"$/i) ||
+($column =~ /$nbsp"Code Studio",/i) || ($column =~ /$nbsp"Code Studio"$/i)) {
+$langArr[l] = 33;
+$l++;
+}
+if (($column =~ /^"ComicLife",/i) || ($column =~ /^"ComicLife"$/i) ||
+($column =~ /[ ,]"ComicLife",/i) || ($column =~ /[ ,]"ComicLife"$/i) ||
+($column =~ /$nbsp"ComicLife",/i) || ($column =~ /$nbsp"ComicLife"$/i)) {
+$langArr[l] = 34;
+$l++;
+}
+if (($column =~ /^"Curiosity Grid",/i) || ($column =~ /^"Curiosity Grid"$/i) ||
+($column =~ /[ ,]"Curisosity Grid",/i) || ($column =~ /[ ,]"Curiosity Grid"$/i) ||
+($column =~ /$nbsp"Curiosity Grid",/i) || ($column =~ /$nbsp"Curiosity Grid"$/i)) {
+$langArr[l] = 35;
+$l++;
+}
+if (($column =~ /^"Linden Scripting Language",/i) || ($column =~ /^"Linden Scripting Language"$/i) ||
+($column =~ /[ ,]"Linden Scripting Language",/i) || ($column =~ /[ ,]"Linden Scripting Language"$/i) ||
+($column =~ /$nbsp"Linden Scripting Language",/i) || ($column =~ /$nbsp"Linden Scripting Language"$/i)) {
+$langArr[l] = 36;
+$l++;
+}
+if (($column =~ /^"Spritely",/i) || ($column =~ /^"Spritely"$/i) ||
+($column =~ /[ ,]"Spritely",/i) || ($column =~ /[ ,]"Spritely"$/i) ||
+($column =~ /$nbsp"Spritely",/i) || ($column =~ /$nbsp"Spritely"$/i)) {
+$langArr[l] = 37;
+$l++;
+}
+if (($column =~ /^"Jypeli",/i) || ($column =~ /^"Jypeli"$/i) ||
+($column =~ /[ ,]"Jypeli",/i) || ($column =~ /[ ,]"Jypeli"$/i) ||
+($column =~ /$nbsp"Jypeli",/i) || ($column =~ /$nbsp"Jypeli"$/i)) {
+$langArr[l] = 38;
+$l++;
+}
+if (($column =~ /^"Wing IDE",/i) || ($column =~ /^"Wing IDE"$/i) ||
+($column =~ /[ ,]"Wind IDE",/i) || ($column =~ /[ ,]"Wind IDE"$/i) ||
+($column =~ /$nbsp"Wing IDE",/i) || ($column =~ /$nbsp"Wing IDE"$/i)) {
+$langArr[l] = 39;
+$l++;
+}
+if (($column =~ /^"Rhino",/i) || ($column =~ /^"Rhino"$/i) ||
+($column =~ /[ ,]"Rhino",/i) || ($column =~ /[ ,]"Rhino"$/i) ||
+($column =~ /$nbsp"Rhino",/i) || ($column =~ /$nbsp"Rhino"$/i)) {
+$langArr[l] = 40;
+$l++;
+}
+if (($column =~ /^"Grasshopper",/i) || ($column =~ /^"Grasshopper"$/i) ||
+($column =~ /[ ,]"Grasshopper",/i) || ($column =~ /[ ,]"Grasshopper"$/i) ||
+($column =~ /$nbsp"Grasshopper",/i) || ($column =~ /$nbsp"Grasshopper"$/i)) {
+$langArr[l] = 41;
+$l++;
+}
+if (($column =~ /^"Construct",/i) || ($column =~ /^"Construct"$/i) ||
+($column =~ /[ ,]"Construct",/i) || ($column =~ /[ ,]"Construct"$/i) ||
+($column =~ /$nbsp"Construct",/i) || ($column =~ /$nbsp"Construct"$/i)) {
+$langArr[l] = 42;
+$l++;
+}
+if (($column =~ /^"Kerbal Space Program",/i) || ($column =~ /^"Kerbal Space Program"$/i) ||
+($column =~ /[ ,]"Kerbal Space Program",/i) || ($column =~ /[ ,]"Kerbal Space Program"$/i) ||
+($column =~ /$nbsp"Kerbal Space Program",/i) || ($column =~ /$nbsp"Kerbal Space Program"$/i)) {
+$langArr[l] = 43;
+$l++;
+}
+if (($column =~ /^"Agent Sheets",/i) || ($column =~ /^"Agent Sheets"$/i) ||
+($column =~ /[ ,]"Agent Sheets",/i) || ($column =~ /[ ,]"Agent Sheets"$/i) ||
+($column =~ /$nbsp"Agent Sheets",/i) || ($column =~ /$nbsp"Agent Sheets"$/i)) {
+$langArr[l] = 44;
+$l++;
+}
+if (($column =~ /^"Teacher-Bot",/i) || ($column =~ /^"Teacher-Bot"$/i) ||
+($column =~ /[ ,]"Teacher-Bot",/i) || ($column =~ /[ ,]"Teacher-Bot"$/i) ||
+($column =~ /$nbsp"Teacher-Bot",/i) || ($column =~ /$nbsp"Teacher-Bot"$/i)) {
+$langArr[l] = 45;
+$l++;
+}
+if (($column =~ /^"Kodable",/i) || ($column =~ /^"Kodable"$/i) ||
+($column =~ /[ ,]"Kodable",/i) || ($column =~ /[ ,]"Kodable"$/i) ||
+($column =~ /$nbsp"Kodable",/i) || ($column =~ /$nbsp"Kodable"$/i)) {
+$langArr[l] = 46;
+$l++;
+}
+if (($column =~ /^"Lightbot",/i) || ($column =~ /^"Lightbot"$/i) ||
+($column =~ /[ ,]"Lightbot",/i) || ($column =~ /[ ,]"Lightbot"$/i) ||
+($column =~ /$nbsp"Lightbot",/i) || ($column =~ /$nbsp"Lightbot"$/i)) {
+$langArr[l] = 47;
+$l++;
+}
+if (($column =~ /^"Logo",/i) || ($column =~ /^"Logo"$/i) ||
+($column =~ /[ ,]"Logo",/i) || ($column =~ /[ ,]"Logo"$/i) ||
+($column =~ /$nbsp"Logo",/i) || ($column =~ /$nbsp"Logo"$/i)) {
+$langArr[l] = 48;
+$l++;
+}
+if (($column =~ /^"Matlab",/i) || ($column =~ /^"Matlab"$/i) ||
+($column =~ /[ ,]"Matlab",/i) || ($column =~ /[ ,]"Matlab"$/i) ||
+($column =~ /$nbsp"Matlab",/i) || ($column =~ /$nbsp"Matlab"$/i)) {
+$langArr[l] = 49;
+$l++;
+}
+if (($column =~ /^"MicroWorlds",/i) || ($column =~ /^"MicroWorlds"$/i) ||
+($column =~ /[ ,]"MicroWorlds",/i) || ($column =~ /[ ,]"MicroWorlds"$/i) ||
+($column =~ /$nbsp"MicroWorlds",/i) || ($column =~ /$nbsp"MicroWorlds"$/i)) {
+$langArr[l] = 50;
+$l++;
+}
+if (($column =~ /^"Multimedia Fusion",/i) || ($column =~ /^"Multimedia Fusion"$/i) ||
+($column =~ /[ ,]"Multimedia Fusion",/i) || ($column =~ /[ ,]"Multimedia Fusion"$/i) ||
+($column =~ /$nbsp"Multimedia Fusion",/i) || ($column =~ /$nbsp"Multimedia Fusion"$/i)) {
+$langArr[l] = 51;
+$l++;
+}
+if (($column =~ /^"Quorum",/i) || ($column =~ /^"Quorum"$/i) ||
+($column =~ /[ ,]"Quorum",/i) || ($column =~ /[ ,]"Quorum"$/i) ||
+($column =~ /$nbsp"Quorum",/i) || ($column =~ /$nbsp"Quorum"$/i)) {
+$langArr[l] = 52;
+$l++;
+}
+if (($column =~ /^"R",/i) || ($column =~ /^"R"$/i) ||
+($column =~ /[ ,]"R",/i) || ($column =~ /[ ,]"R"$/i) ||
+($column =~ /$nbsp"R",/i) || ($column =~ /$nbsp"R"$/i)) {
+$langArr[l] = 53;
+$l++;
+}
+if (($column =~ /^"RPG Maker",/i) || ($column =~ /^"RPG Maker"$/i) ||
+($column =~ /[ ,]"RPG Maker",/i) || ($column =~ /[ ,]"RPG Maker"$/i) ||
+($column =~ /$nbsp"RPG Maker",/i) || ($column =~ /$nbsp"RPG Maker"$/i)) {
+$langArr[l] = 54;
+$l++;
+}
+if (($column =~ /^"Ruby On Rails",/i) || ($column =~ /^"Ruby On Rails"$/i) ||
+($column =~ /[ ,]"Ruby On Rails",/i) || ($column =~ /[ ,]"Ruby On Rails"$/i) ||
+($column =~ /$nbsp"Ruby On Rails",/i) || ($column =~ /$nbsp"Ruby On Rails"$/i)) {
+$langArr[l] = 55;
+$l++;
+}
+if (($column =~ /^"Sketchup",/i) || ($column =~ /^"Sketchup"$/i) ||
+($column =~ /[ ,]"Sketchup",/i) || ($column =~ /[ ,]"Sketchup"$/i) ||
+($column =~ /$nbsp"Sketchup",/i) || ($column =~ /$nbsp"Sketchup"$/i)) {
+$langArr[l] = 56;
+$l++;
+}
+if (($column =~ /^"SQL",/i) || ($column =~ /^"SQL"$/i) ||
+($column =~ /[ ,]"SQL",/i) || ($column =~ /[ ,]"SQL"$/i) ||
+($column =~ /$nbsp"SQL",/i) || ($column =~ /$nbsp"SQL"$/i)) {
+$langArr[l] = 57;
+$l++;
+}
+if (($column =~ /^"Toon Boom Harmony",/i) || ($column =~ /^"Toon Boom Harmony"$/i) ||
+($column =~ /[ ,]"Toon Boom Harmony",/i) || ($column =~ /[ ,]"Toon Boom Harmony"$/i) ||
+($column =~ /$nbsp"Toon Boom Harmony",/i) || ($column =~ /$nbsp"Toon Boom Harmony"$/i)) {
+$langArr[l] = 58;
+$l++;
+}
+if (($column =~ /^"TrackMania United",/i) || ($column =~ /^"Track Mania United"$/i) ||
+($column =~ /[ ,]"TrackMania United",/i) || ($column =~ /[ ,]"TrackMania United"$/i) ||
+($column =~ /$nbsp"TrackMania United",/i) || ($column =~ /$nbsp"TrackMania United"$/i)) {
+$langArr[l] = 59;
+$l++;
+}
+if (($column =~ /^"West Point Bridge Designer",/i) || ($column =~ /^"West Point Bridge Designer"$/i) ||
+($column =~ /[ ,]"West Point Bridge Designer",/i) || ($column =~ /[ ,]"West Point Bridge Designer"$/i) ||
+($column =~ /$nbsp"West Point Bridge Designer",/i) || ($column =~ /$nbsp"West Point Bridge Designer"$/i)) {
+$langArr[l] = 60;
+$l++;
+}
+if (($column =~ /^"Windows Movie Maker",/i) || ($column =~ /^"Windows Movie Maker"$/i) ||
+($column =~ /[ ,]"Windows Movie Maker",/i) || ($column =~ /[ ,]"Windows Movie Maker"$/i) ||
+($column =~ /$nbsp"Windows Movie Maker",/i) || ($column =~ /$nbsp"Windows Movie Maker"$/i)) {
+$langArr[l] = 61;
+$l++;
+}
+if (($column =~ /^"ZBrush",/i) || ($column =~ /^"ZBrush"$/i) ||
+($column =~ /[ ,]"ZBrush",/i) || ($column =~ /[ ,]"ZBrush"$/i) ||
+($column =~ /$nbsp"ZBrush",/i) || ($column =~ /$nbsp"ZBrush"$/i)) {
+$langArr[l] = 62;
+$l++;
+}
+open (my $fh '>', 'code-data1.tsv');
+foreach $v (@targetArr) {
+print $fh $v;
+}
+my $count = 3-$ta;
+for ($a=0; $a<=$count; $a+1) {
+print $fh "@";
+}
+foreach $x (@themeArr) {
+print $fh $x;
+}
+my $countx = 3-$th;
+for ($b=0; $b<=$counxs; $b+1) {
+print $fh "@";
+}
+foreach $y (@langArr) {
+print $fh $y;
+}
+my $county = 3-$l;
+for ($c=0; $c<=$county; $c+1) {
+print $fh "@";
+}
+print $fh "\n";
+close $fh
+}
