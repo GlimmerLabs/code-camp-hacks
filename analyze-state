@@ -60,6 +60,6 @@ analyzeState("Wyoming");
 sub analyzeState($) {
   my $state = shift; # This is how you say "grab an argument" in Perl
   print "$state: ";
-  $state = `./colgrep "$state" 3 "$data" | wc -l`;
+  $result = `./colgrep "$state" 3 "$data" | wc -l`;
   print $result;
 }

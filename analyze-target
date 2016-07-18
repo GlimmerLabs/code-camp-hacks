@@ -20,4 +20,5 @@ sub analyzeTarget($) {
   print "$target: ";
   $result = `./colgrep "$target" 4 "$data" | wc -l`;
   print $result;
+  #instead of print call a function, at the end of each camp insert newline
 }

@@ -37,9 +37,7 @@ analyzeLanguage("Source 2");
 analyzeLanguage("Stencyl");
 analyzeLanguage("Unity");
 analyzeLanguage("Unreal Engine");
-
-print "\n";
-print "RARE LANGUAGES AND TOOLS\n";
+analyzeLanguage("PicoCricket");
 analyzeLanguage("3D Studio");
 analyzeLanguage("Code Studio");
 analyzeLanguage("ComicLife");
