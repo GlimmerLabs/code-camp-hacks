@@ -79,7 +79,8 @@ while (my $line = <$DATA>) {
     "Overview",
   );
   my @languages = (
-    "3D Printing",
+      "3D Printing",
+      "AgentSheets",
     "Adobe",
     "Alice",
     "App Inventor",
@@ -150,7 +151,8 @@ while (my $line = <$DATA>) {
     "West Point Bridge Designer",
     "Windows Movie Maker",
     "ZBrush",
-    "Unknown",
+      "Unknown",
+      "Other",
   );
   # Gather data
   @targetArr = codeStuff($campName, "Target", $targetCol, \@targets);
