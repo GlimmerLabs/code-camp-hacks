@@ -23,7 +23,7 @@ else {
 }
 
 my $maxTargets = 3;
-my $maxThemes = 5;
+my $maxThemes = 6;
 my $maxLanguages = 8;
 
 # Open the output file
@@ -167,21 +167,32 @@ while (my $line = <$DATA>) {
     print $fh "$v\t";
   }
   $count = $maxTargets - 1 - $#targetArr;
-  for (my $a=0; $a<=$count; $a++) {
+  if ($count < 0) {
+    print STDERR "[$campName] Too many targets!\n";
+  }
+  for (my $a=0; $a<$count; $a++) {
     print $fh "@\t";
   }
+
   foreach my $v (@themeArr) {
     print $fh "$v\t";
   }
-  $count = $maxThemees - 1 - $#themeArr;
-  for ($a=0; $a<=$count; $a++) {
+  if ($count < 0) {
+    print STDERR "[$campName] Too many themes!\n";
+  }
+  $count = $maxThemes - 1 - $#themeArr;
+  for ($a=0; $a<$count; $a++) {
     print $fh "@\t";
   }
+
   foreach my $v (@languageArr) {
     print $fh "$v\t";
   }
   $count = $maxLanguages - 1 - $#languageArr;
-  for (my $a=0; $a<=$count; $a++) {
+  if ($count < 0) {
+    print STDERR "[$campName] Too many languages!\n";
+  }
+  for (my $a=0; $a<$count; $a++) {
     print $fh "@\t";
   }
   print $fh "\n";
