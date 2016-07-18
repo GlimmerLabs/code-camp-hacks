@@ -23,3 +23,5 @@ nytprof.out
 *.swp
 data/*.html
 queries/*.html
+*~
+.DS_Store
