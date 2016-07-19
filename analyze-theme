@@ -3,7 +3,7 @@
 # analyze
 #   Do all of our analysis and print out the results.
 
-my $data = "data/aggregate-data.tsv";
+my $data = $ARGV[0];
 
 print "LANGUAGES and TOOLS\n";
 analyzeTheme("Robotics");
